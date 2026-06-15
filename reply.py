@@ -7,7 +7,7 @@ import re
 # Mastodon 설정
 # =====================
 mastodon = Mastodon(
-    access_token="MOSTODON_TOKEN",
+    access_token=os.getenv("MASTODON_TOKEN"),
     api_base_url="https://planet.moe"
 )
 
