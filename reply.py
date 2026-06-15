@@ -3,14 +3,11 @@ import json
 import time
 import re
 import os
-from dotenv import load_dotenv
-load_dotenv("/root/cloud_bot/.env")
-
 # =====================
 # Mastodon 설정
 # =====================
 mastodon = Mastodon(
-    access_token=os.getenv("MASTODON_TOKEN"),
+   access_token=os.environ["MASTODON_TOKEN"],
     api_base_url="https://planet.moe"
 )
 
