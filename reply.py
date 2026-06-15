@@ -4,6 +4,7 @@ import time
 import re
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 # =====================
 # Mastodon 설정
