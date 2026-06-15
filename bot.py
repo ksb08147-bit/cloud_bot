@@ -2,8 +2,6 @@ from mastodon import Mastodon
 import random
 import os
 import time
-from dotenv import load_dotenv
-load_dotenv("/root/cloud_bot/.env")
 mastodon = Mastodon(
     access_token=os.getenv("MASTODON_TOKEN"),
     api_base_url="https://planet.moe"
