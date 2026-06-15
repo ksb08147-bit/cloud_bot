@@ -4,7 +4,7 @@ import time
 import re
 import os
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv("/root/cloud_bot/.env")
 
 # =====================
 # Mastodon 설정
