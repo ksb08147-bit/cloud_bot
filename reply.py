@@ -2,6 +2,8 @@ from mastodon import Mastodon
 import json
 import time
 import re
+import os
+from dotenv import load_dotenv
 
 # =====================
 # Mastodon 설정
