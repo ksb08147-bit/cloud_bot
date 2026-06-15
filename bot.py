@@ -4,7 +4,7 @@ import os
 import time
 import os
 from dotenv import load_dotenv
-
+load_dotenv()
 mastodon = Mastodon(
     access_token=os.getenv("MASTODON_TOKEN"),
     api_base_url="https://planet.moe"
