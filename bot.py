@@ -3,7 +3,7 @@ import random
 import os
 import time
 mastodon = Mastodon(
-    access_token=os.getenv("MASTODON_TOKEN"),
+     access_token=os.environ["MASTODON_TOKEN"],
     api_base_url="https://planet.moe"
 )
 
