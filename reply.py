@@ -4,6 +4,7 @@ import json
 import time
 import re
 import os
+import random
 
 mastodon = Mastodon(
     access_token=os.environ["MASTODON_TOKEN"],
@@ -71,7 +72,7 @@ def check_mentions():
                 else:
                     for key in replies:
                         if key in text:
-                            reply = replies[key][0]
+                            reply = random.choice(replies[key])
 
                             mastodon.status_post(
                                 status=reply,
