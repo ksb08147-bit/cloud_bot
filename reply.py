@@ -1,4 +1,5 @@
 from mastodon import Mastodon
+from lotto import make_lotto
 import json
 import time
 import re
@@ -53,19 +54,32 @@ def check_mentions():
                 text = clean_text(status["content"])
 
                 replied = False
+replied = False
 
-                for key in replies:
-                    if key in text:
-                        reply = replies[key][0]
+if "로또번호" in text:
+    reply = make_lotto()
 
-                        mastodon.status_post(
-                            status=reply,
-                            in_reply_to_id=sid
-                        )
+    mastodon.status_post(
+        status=reply,
+        in_reply_to_id=sid
+    )
 
-                        print(f"💬 답장 ({key}): {reply}")
-                        replied = True
-                        break
+    print(f"💬 답장 (로또번호): {reply}")
+    replied = True
+
+else:
+    for key in replies:
+        if key in text:
+            reply = replies[key][0]
+
+            mastodon.status_post(
+                status=reply,
+                in_reply_to_id=sid
+            )
+
+            print(f"💬 답장 ({key}): {reply}")
+            replied = True
+            break
 
                 if not replied:
                     mastodon.status_post(
