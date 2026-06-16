@@ -70,8 +70,12 @@ def check_mentions():
                     replied = True
 
                 else:
+                    print("TEXT RECEIVED:", text)
                     for key in replies:
+                        print("CHECK:", key)
+                        
                         if key in text:
+                            print("MATCH:", key, replies[key])
                             reply = random.choice(replies[key])
 
                             mastodon.status_post(
