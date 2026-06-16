@@ -22,8 +22,8 @@ LAST_ID_FILE = "last_notif.txt"
 def load_last_id():
     if os.path.exists(LAST_ID_FILE):
         with open(LAST_ID_FILE, "r") as f:
-            return f.read().strip()
-    return None
+            return int(f.read().strip())
+    return 0
 
 def save_last_id(nid):
     with open(LAST_ID_FILE, "w") as f:
@@ -34,7 +34,9 @@ def check_mentions():
 
     while True:
         try:
-            notifications = mastodon.notifications()
+            notifications = mastodon.notifications(
+                since_id=since_id
+                )
 
             # 최신 → 오래된 순이라 뒤집어 처리
             notifications = list(reversed(notifications))
@@ -43,7 +45,7 @@ def check_mentions():
                 if n["type"] != "mention":
                     continue
 
-                nid = str(n["id"])
+                nid = int(n["id"])
 
                 # 이미 처리한 건 스킵
                 if since_id and nid <= since_id:
